@@ -1,4 +1,91 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Redressed&family=Roboto+Serif:ital,opsz,wght@0,8..144,400;1,8..144,100&family=Roboto:wght@400;700&family=Rubik:ital,wght@0,500;1,700&display=swap");
+
+:root {
+  --blue: rgb(19, 16, 36);
+  --white: rgb(236, 236, 236);
+  --btn-bg: #570a57;
+  --text-clr: #333;
+  --btn-text-clr: #fff;
+  --btn-background-clr: #0b5ed7;
+  --header--bg-clr: #212529;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+.btn,
+.header {
+  background: var(--background-color) !important;
+  color: var(--text-color) !important;
+  font-weight: var(--font-weight) !important;
+  border: var(--border-btn) !important;
+
+  transition: background 0.3s ease-in-out, color 0.6s ease-in-out !important;
+  -webkit-transition: background 0.3s ease-in-out, color 0.6s ease-in-out !important;
+  -moz-transition: background 0.3s ease-in-out, color 0.6s ease-in-out !important;
+  -ms-transition: background 0.3s ease-in-out, color 0.6s ease-in-out !important;
+  -o-transition: background 0.3s ease-in-out, color 0.6s ease-in-out !important;
+}
+
+.btn {
+  color: var(--btn-text-clr) !important;
+  background: var(--btn-bg-clr) !important;
+}
+.header {
+  background-color: var(--header-bg-clr) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-clr) !important;
+}
+
+body.light,
+.btn.light,
+h1.light,
+h2.light,
+h3.light,
+h4.light,
+h5.light,
+h6.light,
+.header.light {
+  --background-color: var(--white) !important;
+  --text-color: var(--text-clr) !important;
+  --font-weight: 400 !important;
+  --border-btn: none !important;
+  --btn-text-clr: var(--white) !important;
+  --btn-bg-clr: var(--btn-background-clr) !important;
+  --heading-clr: var(--text-clr) !important;
+  --header-bg-clr: var(--header--bg-clr) !important;
+}
+
+body.dark,
+.btn.dark,
+h1.dark,
+h2.dark,
+h3.dark,
+h4.dark,
+h5.dark,
+h6.dark,
+.header.dark {
+  --background-color: var(--blue) !important;
+  --text-color: var(--text-clr) !important;
+  --font-weight: 500 !important;
+  --btn-text-clr: var(--white) !important;
+  --btn-bg-clr: #2e0249 !important;
+  --heading-clr: var(--white) !important;
+  --header-bg-clr: #1b1b41 !important;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +122,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
