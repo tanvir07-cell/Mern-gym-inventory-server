@@ -1,5 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
@@ -7,8 +10,16 @@ import { BiShow, BiHide } from "react-icons/bi";
 import authentication from "../../images/login/authentication.svg";
 
 import SocialLogin from "../SocialLogin/SocialLogin";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import auth from "../../Firebase/Firebase.init";
 
 const Register = () => {
+  // for user creation:
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
   const [showPass, setShowPass] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -65,7 +76,47 @@ const Register = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    if (
+      userInfo.email &&
+      userInfo.password &&
+      userInfo.password === userInfo.confirmPass
+    ) {
+      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+      toast.success(`${userInfo.email} created successfully!`, { id: "reg" });
+    } else {
+      toast.error(`Please provide all information before registered`);
+    }
   };
+
+  // error from firebase backed:
+  useEffect(() => {
+    if (error) {
+      switch (error?.code) {
+        case "auth/email-already-in-use":
+          toast.error("This email already exist! Please provide a new email", {
+            toastId: "id-email-exist",
+          });
+          break;
+
+        case "auth/invalid-email":
+          toast.error(
+            "Invalid Email Provided ! Please Provide a Valid Email Address",
+            { toastId: "id-1" }
+          );
+          break;
+
+        case "auth/invalid-password":
+          toast.error("Wrong Password! Provide a valid Password", {
+            toastId: "id-2",
+          });
+          break;
+
+        default:
+          toast.error("Something Went Wrong", { toastId: "id-3" });
+          break;
+      }
+    }
+  }, [error]);
 
   const navigate = useNavigate();
 
@@ -156,6 +207,7 @@ const Register = () => {
         </p>
 
         <SocialLogin></SocialLogin>
+        <ToastContainer></ToastContainer>
       </Form>
     </div>
   );

@@ -60,7 +60,7 @@ const Login = () => {
 
   return (
     <div className=" login">
-      <div className="w-90 container mt-2">
+      <div className="w-90 container mt-2 img-container">
         <img src={authentication} alt="" className="w-100" />
       </div>
       <Form

@@ -39,4 +39,10 @@
     min-width: 100vw;
     min-height: 100%;
   }
+  .img-container {
+    width: 70% !important;
+  }
+  img {
+    width: 100%;
+  }
 }
