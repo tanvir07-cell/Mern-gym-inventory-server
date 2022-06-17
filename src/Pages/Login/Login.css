@@ -2,10 +2,32 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+.error-message {
+  font-size: 12px !important;
+  color: red !important;
+  margin: 10px !important;
+}
+.error-message::before {
+  content: "❌ ";
+}
+
+.parent-hide-show {
+  position: relative;
+}
+
+.position-hide-show {
+  position: absolute;
+  top: 30%;
+  left: 90%;
+
+  cursor: pointer;
+}
+
 .form {
   border-radius: 37px;
   background: #e0e0e0;
   box-shadow: 6px 6px 24px #bebebe, -6px -6px 24px #ffffff;
+  min-height: 80vh;
 }
 
 @media (max-width: 576px) {

@@ -75,7 +75,8 @@ h3.dark,
 h4.dark,
 h5.dark,
 h6.dark,
-.header.dark {
+.header.dark,
+a.dark {
   --background-color: var(--blue) !important;
   --text-color: var(--text-clr) !important;
   --font-weight: 500 !important;

@@ -1,29 +1,27 @@
-import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
 
-import {
-  useAuthState,
-  useSignInWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import auth from "../../Firebase/Firebase.init";
 import authentication from "../../images/login/authentication.svg";
-import SocialLogin from "../SocialLogin/SocialLogin";
-import "./Login.css";
 
-const Login = () => {
+import SocialLogin from "../SocialLogin/SocialLogin";
+
+const Register = () => {
   const [showPass, setShowPass] = useState(false);
+
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
+    confirmPass: "",
   });
+
   const [errors, setErrors] = useState({
     emailError: "",
     passwordError: "",
+    confirmationPasswordError: "",
   });
-  const [signInWithEmailAndPassword, user2, loading, error] =
-    useSignInWithEmailAndPassword(auth);
 
   const handleEmailChange = (event) => {
     if (
@@ -34,8 +32,8 @@ const Login = () => {
       setUserInfo({ ...userInfo, email: event.target.value });
       setErrors({ ...errors, emailError: "" });
     } else {
+      setErrors({ ...errors, emailError: "Invalid email address" });
       setUserInfo({ ...userInfo, email: "" });
-      setErrors({ ...errors, emailError: "Invalid Email Address" });
     }
   };
 
@@ -45,10 +43,23 @@ const Login = () => {
       setErrors({ ...errors, passwordError: "" });
     } else {
       setErrors({
-        ...error,
-        passwordError: "Password Must Contain six character",
+        ...errors,
+        passwordError: "Password must be at least 6 characters",
       });
       setUserInfo({ ...userInfo, password: "" });
+    }
+  };
+
+  const handleConfirmPasswordChange = (event) => {
+    if (event.target.value !== userInfo.password) {
+      setErrors({
+        ...errors,
+        confirmationPasswordError: "Password does not match",
+      });
+      setUserInfo({ ...userInfo, confirmPass: "" });
+    } else {
+      setUserInfo({ ...userInfo, confirmPass: event.target.value });
+      setErrors({ ...errors, confirmationPasswordError: "" });
     }
   };
 
@@ -83,9 +94,25 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <div className="parent-hide-show">
             <Form.Control
-              type={showPass ? "text" : "password"}
+              type="password"
               placeholder="Password"
               onChange={handlePasswordChange}
+            />
+          </div>
+
+          {errors?.passwordError && (
+            <Form.Text className="error-message">
+              {errors?.passwordError}
+            </Form.Text>
+          )}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <div className="parent-hide-show">
+            <Form.Control
+              type={showPass ? "text" : "password"}
+              placeholder="Confirmation Password"
+              onChange={handleConfirmPasswordChange}
             />
             {showPass ? (
               <BiHide
@@ -100,9 +127,12 @@ const Login = () => {
             )}
           </div>
 
-          {errors?.passwordError && (
-            <Form.Text className="error-message">
-              {errors?.passwordError}
+          {!errors?.passwordError && (
+            // dynamic css class when password error not occur then show the password confirm error:
+            <Form.Text
+              className={`!errors?.passwordError? "error-message" : ""`}
+            >
+              {errors?.confirmationPasswordError}
             </Form.Text>
           )}
         </Form.Group>
@@ -115,13 +145,13 @@ const Login = () => {
           login
         </Button>
         <p className="mt-3">
-          New to Gym inventory ?
+          Already have an account?
           <Link
             className="text-primary pe-auto text-decoration-none"
-            to="/register"
-            onClick={() => navigate("/register")}
+            to="/login"
+            onClick={() => navigate("/login")}
           >
-            Please Register
+            Login first
           </Link>
         </p>
 
@@ -131,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
