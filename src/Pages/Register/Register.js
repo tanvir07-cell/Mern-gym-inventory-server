@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
 
-import authentication from "../../images/login/authentication.svg";
+import registration from "../../images/login/registration.svg";
 
 import SocialLogin from "../SocialLogin/SocialLogin";
 import {
@@ -19,7 +19,7 @@ import auth from "../../Firebase/Firebase.init";
 const Register = () => {
   // for user creation:
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [showPass, setShowPass] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -82,7 +82,13 @@ const Register = () => {
       userInfo.password === userInfo.confirmPass
     ) {
       createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-      toast.success(`${userInfo.email} created successfully!`, { id: "reg" });
+
+      if (error?.code !== "auth/email-already-in-use") {
+        toast.success(`${userInfo.email} created successfully!`, { id: "reg" });
+      }
+
+      // reset the input field:
+      event.target.reset();
     } else {
       toast.error(`Please provide all information before registered`);
     }
@@ -123,7 +129,7 @@ const Register = () => {
   return (
     <div className=" login">
       <div className="w-90 container mt-2">
-        <img src={authentication} alt="" className="w-100" />
+        <img src={registration} alt="" className="w-100" />
       </div>
       <Form
         className="w-50 container form  h-50 mt-5 p-5"
@@ -193,7 +199,7 @@ const Register = () => {
           variant="primary"
           className="submit-login-btn w-100 btn "
         >
-          login
+          Register
         </Button>
         <p className="mt-3">
           Already have an account?

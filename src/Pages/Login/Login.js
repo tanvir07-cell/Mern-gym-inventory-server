@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
 
@@ -9,10 +9,13 @@ import {
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import authentication from "../../images/login/authentication.svg";
+import "react-toastify/dist/ReactToastify.css";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Login.css";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const [user] = useAuthState(auth);
   const [showPass, setShowPass] = useState(false);
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -54,7 +57,46 @@ const Login = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    signInWithEmailAndPassword(userInfo.email, userInfo.password);
+
+    if (!error) {
+      toast.success(`${userInfo.email} logged in successfully`);
+    }
   };
+
+  // error from firebase backed:
+  useEffect(() => {
+    if (error) {
+      switch (error?.code) {
+        case "auth/email-already-in-use":
+          toast.error("This email already exist! Please provide a new email", {
+            toastId: "id-email-exist",
+          });
+          break;
+
+        case "auth/email-not-found":
+          toast.error("At first register then try to login", { id: "login" });
+          break;
+
+        case "auth/invalid-email":
+          toast.error(
+            "Invalid Email Provided ! Please Provide a Valid Email Address",
+            { toastId: "id-1" }
+          );
+          break;
+
+        case "auth/invalid-password":
+          toast.error("Wrong Password! Provide a valid Password", {
+            toastId: "id-2",
+          });
+          break;
+
+        default:
+          toast.error("Something Went Wrong", { toastId: "id-3" });
+          break;
+      }
+    }
+  }, [error]);
 
   const navigate = useNavigate();
 
@@ -127,6 +169,7 @@ const Login = () => {
 
         <SocialLogin></SocialLogin>
       </Form>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
