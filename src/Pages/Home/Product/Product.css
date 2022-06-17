@@ -1,0 +1,14 @@
+.product {
+  border-radius: 9px;
+  background: #e0e0e0;
+  box-shadow: 8px 8px 20px #cecece, -8px -8px 20px #f2f2f2;
+  width: 250px !important;
+  height: auto;
+}
+.product img {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+.product-description {
+}
