@@ -12,10 +12,13 @@ const Inventory = () => {
   const { data } = products;
 
   return (
-    <div className="container d-flex align-items-center justify-content-between">
-      {data?.map((product) => (
-        <Product key={product._id} product={product}></Product>
-      ))}
+    <div id="inventory">
+      <h1 className="text-center mt-3">Inventory</h1>
+      <div className="container d-flex align-items-center justify-content-between">
+        {data?.map((product) => (
+          <Product key={product._id} product={product}></Product>
+        ))}
+      </div>
     </div>
   );
 };
