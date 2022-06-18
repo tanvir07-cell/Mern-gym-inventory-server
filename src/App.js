@@ -7,6 +7,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Inventory from "./Pages/Home/Inventory/Inventory";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 function App() {
   return (
     <div className="App">
@@ -17,8 +18,12 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/inventory" element={<Inventory></Inventory>}></Route>
         <Route
-          path="/inventory/:id"
-          element={<ProductDetail></ProductDetail>}
+          path="inventory/:id"
+          element={
+            <RequireAuth>
+              <ProductDetail></ProductDetail>
+            </RequireAuth>
+          }
         ></Route>
       </Routes>
     </div>

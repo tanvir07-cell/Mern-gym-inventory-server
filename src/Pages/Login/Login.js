@@ -59,6 +59,8 @@ const Login = () => {
     event.preventDefault();
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
 
+    event.target.reset();
+
     if (!error) {
       toast.success(`${userInfo.email} logged in successfully`);
     }
@@ -98,7 +100,17 @@ const Login = () => {
     }
   }, [error]);
 
+  // after login redirect to the location:
   const navigate = useNavigate();
+  let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [from, navigate, user]);
 
   return (
     <div className=" login">

@@ -1,26 +1,26 @@
 [
   {
-    "_id": 1,
+    "id": "1",
     "name": "Treadmeal",
-    "price": 1250,
+    "price": "1250",
     "img": "https://i.ibb.co/7nr4M0Z/photo-1540111970170-b1c4d4fbadaa-1.png",
-    "quantity": 4,
+    "quantity": "4",
     "supplier": "Ashab Rafi"
   },
   {
-    "_id": 2,
+    "id": "2",
     "name": "Dumbell",
     "price": 1050,
     "img": "https://i.ibb.co/FXZzStc/photo-1638536534847-2cb61af9efe3-2.png",
-    "quantity": 6,
+    "quantity": "6",
     "supplier": "Tanvir Rifat"
   },
   {
-    "_id": 3,
+    "id": "3",
     "name": "Barbell",
     "price": 250,
     "img": "https://i.ibb.co/LpnrBT7/photo-1620188526357-ff08e03da266-1.png",
-    "quantity": 10,
+    "quantity": "10",
     "supplier": "Gazi Rajin"
   }
 ]

@@ -1,9 +1,13 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import DarkMode from "../../../DarkMode/DarkMode";
+import auth from "../../../Firebase/Firebase.init";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <header>
       <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
@@ -17,14 +21,31 @@ const Header = () => {
               <Nav.Link as={Link} to="/inventory">
                 Inventory
               </Nav.Link>
-              <Nav.Link as={Link} to="/">
-                Pricing
-              </Nav.Link>
+              {user && (
+                <Nav.Link as={Link} to="/">
+                  Manage Items
+                </Nav.Link>
+              )}
             </Nav>
             <Nav>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
+              {user ? (
+                <Nav.Link as={Link} to="" onClick={() => signOut(auth)}>
+                  LogOut
+                </Nav.Link>
+              ) : (
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
+              )}
+
+              {user && (
+                <div>
+                  <Nav.Link as={Link} to="/">
+                    Add items
+                  </Nav.Link>
+                </div>
+              )}
+
               <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link>

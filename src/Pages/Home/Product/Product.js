@@ -24,7 +24,7 @@ const Products = ({ product }) => {
         </p>
         <button
           className="btn btn-primary mb-3 "
-          onClick={() => navigate(`${_id}`)}
+          onClick={() => navigate(`/inventory/${_id}`)}
         >
           stock update : {name}
         </button>
