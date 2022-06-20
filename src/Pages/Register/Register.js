@@ -15,6 +15,7 @@ import {
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
+import { Si1Password, SiMinutemailer } from "react-icons/si";
 
 const Register = () => {
   // for user creation:
@@ -127,8 +128,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   return (
-    <div className=" login">
-      <div className="w-90 container mt-2">
+    <div className=" login mt-5">
+      <div className="w-90 container mt-5">
         <img src={registration} alt="" className="w-100" />
       </div>
       <Form
@@ -136,11 +137,15 @@ const Register = () => {
         onSubmit={handleFormSubmit}
       >
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            onChange={handleEmailChange}
-          />
+          <div className="d-flex align-items-center position-relative">
+            <SiMinutemailer className="position-absolute start-0  icon-pos"></SiMinutemailer>
+            <Form.Control
+              type="email"
+              placeholder="Email"
+              onChange={handleEmailChange}
+              className="input--style"
+            />
+          </div>
           {errors?.emailError && (
             <Form.Text className="error-message">
               {errors?.emailError}
@@ -149,12 +154,25 @@ const Register = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <div className="parent-hide-show">
+          <div className="parent-hide-show d-flex align-items-center position-relative">
+            <Si1Password className="position-absolute start-0 icon-pos"></Si1Password>
             <Form.Control
-              type="password"
+              type={showPass ? "text" : "password"}
               placeholder="Password"
               onChange={handlePasswordChange}
+              className="input--style"
             />
+            {showPass ? (
+              <BiHide
+                className="position-hide-show"
+                onClick={() => setShowPass(!showPass)}
+              ></BiHide>
+            ) : (
+              <BiShow
+                className="position-hide-show"
+                onClick={() => setShowPass(!showPass)}
+              ></BiShow>
+            )}
           </div>
 
           {errors?.passwordError && (

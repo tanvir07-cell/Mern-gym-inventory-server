@@ -1,4 +1,5 @@
 import React from "react";
+import "./Inventory.css";
 
 import useInventory from "../../../hooks/useInventory";
 
@@ -8,14 +9,13 @@ const Inventory = () => {
   // use Custom hook:
   const [products] = useInventory();
 
-  // because i send this {success:true,data:result(this is the array)}
-  const { data } = products;
+  console.log(products);
 
   return (
     <div id="inventory">
       <h1 className="text-center mt-3">Inventory</h1>
-      <div className="container d-flex align-items-center justify-content-between">
-        {data?.map((product) => (
+      <div className="container products-container">
+        {products?.map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </div>

@@ -10,7 +10,13 @@ const Header = () => {
   const [user] = useAuthState(auth);
   return (
     <header>
-      <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        variant="dark"
+        className="header"
+        fixed="top"
+      >
         <Container>
           <Navbar.Brand as={Link} to="/">
             Gym Inventory
@@ -18,9 +24,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/#inventory">Inventory</Nav.Link>
+              <Nav.Link href="/inventory">Inventory</Nav.Link>
               {user && (
-                <Nav.Link as={Link} to="/">
+                <Nav.Link as={Link} to="/manageItem">
                   Manage Items
                 </Nav.Link>
               )}
@@ -45,7 +51,7 @@ const Header = () => {
               )}
 
               <Nav.Link eventKey={2} href="#memes">
-                Dank memes
+                Blog
               </Nav.Link>
 
               <DarkMode></DarkMode>

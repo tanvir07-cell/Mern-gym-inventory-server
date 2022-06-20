@@ -10,5 +10,6 @@
   border-top-right-radius: 9px;
 }
 
-.product-description {
+.button-danger {
+  background: #bb2d3b !important;
 }

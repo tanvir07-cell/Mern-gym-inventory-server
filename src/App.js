@@ -8,6 +8,8 @@ import Register from "./Pages/Register/Register";
 import Inventory from "./Pages/Home/Inventory/Inventory";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import RequireAuth from "./Pages/RequireAuth/RequireAuth";
+import ManageItems from "./Pages/ManageItems/ManageItems";
+import AddItem from "./Pages/AddItem/AddItem";
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,8 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/manageItem" element={<ManageItems></ManageItems>}></Route>
+        <Route path="/addItem" element={<AddItem></AddItem>}></Route>
       </Routes>
     </div>
   );

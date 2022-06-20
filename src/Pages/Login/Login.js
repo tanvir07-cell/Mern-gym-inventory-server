@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
+import { Si1Password, SiMinutemailer } from "react-icons/si";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 import {
   useAuthState,
@@ -113,8 +115,8 @@ const Login = () => {
   }, [from, navigate, user]);
 
   return (
-    <div className=" login">
-      <div className="w-90 container mt-2 img-container">
+    <div className=" login mt-5">
+      <div className="w-90 container mt-5 img-container">
         <img src={authentication} alt="" className="w-100" />
       </div>
       <Form
@@ -122,11 +124,15 @@ const Login = () => {
         onSubmit={handleFormSubmit}
       >
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            onChange={handleEmailChange}
-          />
+          <div className="d-flex align-items-center position-relative">
+            <SiMinutemailer className="position-absolute start-0 icon-pos"></SiMinutemailer>
+            <Form.Control
+              type="email"
+              placeholder="Email"
+              onChange={handleEmailChange}
+              className="input--style"
+            />
+          </div>
           {errors?.emailError && (
             <Form.Text className="error-message">
               {errors?.emailError}
@@ -135,11 +141,13 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <div className="parent-hide-show">
+          <div className="parent-hide-show d-flex align-items-center position-relative">
+            <Si1Password className="position-absolute start-0 icon-pos"></Si1Password>
             <Form.Control
               type={showPass ? "text" : "password"}
               placeholder="Password"
               onChange={handlePasswordChange}
+              className="input--style"
             />
             {showPass ? (
               <BiHide

@@ -30,6 +30,16 @@
   min-height: 80vh;
 }
 
+::placeholder {
+  text-align: center;
+  color: #888 !important;
+}
+.input--style {
+  text-align: center;
+}
+.icon-pos {
+  margin-left: 0.2rem;
+}
 @media (max-width: 576px) {
   .login {
     grid-template-columns: repeat(1, 1fr);
