@@ -11,12 +11,13 @@ const AddItem = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const product = {
-      name: e.target.name.value,
-      img: e.target.img.value,
-      supplier: e.target.supplier.value,
-      price: e.target.price.value,
+      name: e.target.name?.value,
+      img: e.target.img?.value,
+      supplier: e.target.supplier?.value,
+      price: e.target.price?.value,
 
-      quantity: e.target.quantity.value,
+      quantity: e.target.quantity?.value,
+      email: e.target.email?.value,
     };
 
     fetch("http://localhost:5000/addProduct", {
@@ -48,6 +49,7 @@ const AddItem = () => {
               className="input--style"
               readOnly
               value={user?.email}
+              name="email"
             />
           </div>
         </Form.Group>

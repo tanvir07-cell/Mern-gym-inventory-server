@@ -57,7 +57,7 @@ function App() {
         ></Route>
 
         <Route
-          path="/addItem"
+          path="/account"
           element={
             <RequireAuth>
               <Account></Account>

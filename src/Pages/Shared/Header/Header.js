@@ -10,13 +10,7 @@ const Header = () => {
   const [user] = useAuthState(auth);
   return (
     <header>
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        variant="dark"
-        className="header"
-        fixed="top"
-      >
+      <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
         <Container>
           <Navbar.Brand as={Link} to="/">
             Gym Inventory

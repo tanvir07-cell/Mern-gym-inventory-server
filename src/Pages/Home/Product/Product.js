@@ -52,44 +52,49 @@ const Products = (props) => {
   };
 
   return (
-    <div className="col-sm-12 col-md-6 col-lg-4 mt-5 product">
-      <img src={img} alt="" />
-      <div className="product-description mx-2">
-        <h3 className="mt-2 text-shadow-h2"> {name}</h3>
-        <p>
-          Supplier : <span>{supplier}</span>
-        </p>
-        {/* <p>{description}</p> */}
+    <div>
+      {products?.length && (
+        <div className="col-sm-12 col-md-6 col-lg-4 mt-5 product">
+          <img src={img} alt="" />
+          <div className="product-description mx-2">
+            <h3 className="mt-2 text-shadow-h2"> {name}</h3>
+            <p>
+              Supplier : <span>{supplier}</span>
+            </p>
+            {/* <p>{description}</p> */}
 
-        <p>
-          Price : <small>${price}</small>
-        </p>
-        <p>
-          Quantity : <span>{quantity}</span>
-        </p>
-        <div>
-          <button
-            className="btn btn-primary mb-2 mt-2 w-100"
-            onClick={() => navigate(`/inventory/${_id}`)}
-          >
-            <GrUpdate className="mx-2 text-white"></GrUpdate>
-            update : {name}
-          </button>
+            <p>
+              Price : <small>${price}</small>
+            </p>
+            <p>
+              Quantity : <span>{quantity}</span>
+            </p>
+            <div>
+              <button
+                className="btn btn-primary mb-2 mt-2 w-100"
+                onClick={() => navigate(`/inventory/${_id}`)}
+              >
+                <GrUpdate className="mx-2 text-white"></GrUpdate>
+                update : {name}
+              </button>
 
-          {/* if user login then see this delete button: */}
-          {user ? (
-            <button
-              className="btn btn-danger mb-3 w-100 button-danger"
-              onClick={() => handleDelete(_id, name, props.product)}
-            >
-              <FcDeleteDatabase className="mx-2"></FcDeleteDatabase>
-              Delete : {name}
-            </button>
-          ) : (
-            ""
-          )}
+              {/* if user login then see this delete button: */}
+              {user ? (
+                <button
+                  className="btn btn-danger mb-3 w-100 button-danger"
+                  onClick={() => handleDelete(_id, name, props.product)}
+                >
+                  <FcDeleteDatabase className="mx-2"></FcDeleteDatabase>
+                  Delete : {name}
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
       <ToastContainer></ToastContainer>
     </div>
   );
