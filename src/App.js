@@ -10,7 +10,16 @@ import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import ManageItems from "./Pages/ManageItems/ManageItems";
 import AddItem from "./Pages/AddItem/AddItem";
+import { useEffect } from "react";
 function App() {
+  useEffect(() => {
+    const loader = document.getElementById("spinner");
+
+    // using arrow function to the loader:
+    window.addEventListener("load", () => {
+      loader.style.display = "none";
+    });
+  }, []);
   return (
     <div className="App">
       <Header></Header>

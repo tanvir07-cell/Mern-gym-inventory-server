@@ -24,7 +24,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/inventory">Inventory</Nav.Link>
+              <Nav.Link as={Link} to="/inventory">
+                Inventory
+              </Nav.Link>
               {user && (
                 <Nav.Link as={Link} to="/manageItem">
                   Manage Items
@@ -50,9 +52,18 @@ const Header = () => {
                 </div>
               )}
 
-              <Nav.Link eventKey={2} href="#memes">
+              {user ? (
+                <Nav.Link eventKey={2} href="#memes">
+                  My Items
+                </Nav.Link>
+              ) : (
+                <Nav.Link eventKey={2} href="#memes">
+                  Blog
+                </Nav.Link>
+              )}
+              {/* <Nav.Link eventKey={2} href="#memes">
                 Blog
-              </Nav.Link>
+              </Nav.Link> */}
 
               <DarkMode></DarkMode>
             </Nav>
