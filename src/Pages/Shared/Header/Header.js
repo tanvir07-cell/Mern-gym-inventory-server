@@ -53,7 +53,7 @@ const Header = () => {
               )}
 
               {user ? (
-                <Nav.Link eventKey={2} href="#memes">
+                <Nav.Link eventKey={2} as={Link} to="/account">
                   My Items
                 </Nav.Link>
               ) : (

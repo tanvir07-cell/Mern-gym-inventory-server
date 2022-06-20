@@ -11,6 +11,7 @@ import RequireAuth from "./Pages/RequireAuth/RequireAuth";
 import ManageItems from "./Pages/ManageItems/ManageItems";
 import AddItem from "./Pages/AddItem/AddItem";
 import { useEffect } from "react";
+import Account from "./Pages/Account/Account";
 function App() {
   useEffect(() => {
     const loader = document.getElementById("spinner");
@@ -38,8 +39,31 @@ function App() {
             </RequireAuth>
           }
         ></Route>
-        <Route path="/manageItem" element={<ManageItems></ManageItems>}></Route>
-        <Route path="/addItem" element={<AddItem></AddItem>}></Route>
+        <Route
+          path="/manageItem"
+          element={
+            <RequireAuth>
+              <ManageItems></ManageItems>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/addItem"
+          element={
+            <RequireAuth>
+              <AddItem></AddItem>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/addItem"
+          element={
+            <RequireAuth>
+              <Account></Account>
+            </RequireAuth>
+          }
+        ></Route>
       </Routes>
     </div>
   );
