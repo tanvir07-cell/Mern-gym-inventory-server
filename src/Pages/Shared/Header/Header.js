@@ -5,11 +5,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import DarkMode from "../../../DarkMode/DarkMode";
 import auth from "../../../Firebase/Firebase.init";
+import "./Header.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
   return (
-    <header>
+    <header className="header">
       <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
         <Container>
           <Navbar.Brand as={Link} to="/">

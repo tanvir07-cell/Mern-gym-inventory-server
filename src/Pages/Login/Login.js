@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, ToastHeader } from "react-bootstrap";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Si1Password, SiMinutemailer } from "react-icons/si";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -17,6 +18,7 @@ import "./Login.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
   const [user] = useAuthState(auth);
   const [showPass, setShowPass] = useState(false);
   const [userInfo, setUserInfo] = useState({
@@ -63,7 +65,7 @@ const Login = () => {
 
     event.target.reset();
 
-    if (!error) {
+    if (userInfo.email === true && userInfo.password === true) {
       toast.success(`${userInfo.email} logged in successfully`);
     }
   };
@@ -113,6 +115,15 @@ const Login = () => {
       navigate(from, { replace: true });
     }
   }, [from, navigate, user]);
+
+  const handlePasswordChangeWithEmail = async () => {
+    if (userInfo?.email) {
+      await sendPasswordResetEmail(userInfo?.email);
+      toast.success(`Sending Email To ${userInfo.email}`);
+      return;
+    }
+    toast.error(`Please provide valid email address!`);
+  };
 
   return (
     <div className=" login mt-5">
@@ -184,6 +195,17 @@ const Login = () => {
             onClick={() => navigate("/register")}
           >
             Please Register
+          </Link>
+        </p>
+
+        <p className="mt-3">
+          Forget Password ?
+          <Link
+            className="text-primary pe-auto text-decoration-none"
+            to=""
+            onClick={handlePasswordChangeWithEmail}
+          >
+            Reset Password
           </Link>
         </p>
 

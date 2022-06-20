@@ -8,14 +8,18 @@ import useInventory from "../../../hooks/useInventory";
 import "./Product.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
+import UseProductDetail from "../../../hooks/UseProductDetail";
 
-const Products = (props) => {
+const Product = (props) => {
   const [user] = useAuthState(auth);
   const { name, price, img, supplier, quantity, _id } = props.product;
   const navigate = useNavigate();
-  console.log(props.product);
+  // console.log(props.product);
 
   const [products, setProducts] = useState([]);
+  // const [product, setProduct] = UseProductDetail(_id);
+  // console.log(product);
+  console.log(products);
 
   useEffect(() => {
     fetch(`http://localhost:5000/products`)
@@ -42,8 +46,9 @@ const Products = (props) => {
           });
 
           if (data.deletedCount === 1) {
-            const remainingProducts = products?.filter((pd) => pd?._id !== _id);
-            setProducts(remainingProducts);
+            // setProduct({});
+            const remainingProducts = products?.filter((pd) => pd._id !== _id);
+            setProducts(...products, remainingProducts);
           }
         });
       return;
@@ -100,4 +105,4 @@ const Products = (props) => {
   );
 };
 
-export default Products;
+export default Product;

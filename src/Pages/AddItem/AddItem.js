@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import "./addItem.css";
 import { MdBookmarkAdded } from "react-icons/md";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddItem = () => {
   const [user] = useAuthState(auth);
@@ -30,6 +31,9 @@ const AddItem = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        toast.success(
+          `${user?.email} added successfully this ${e.target.name?.value}`
+        );
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -121,6 +125,7 @@ const AddItem = () => {
           </Button>
         </div>
       </Form>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

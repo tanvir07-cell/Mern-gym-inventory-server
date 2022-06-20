@@ -13,3 +13,9 @@
 .button-danger {
   background: #bb2d3b !important;
 }
+
+@media (max-width: 576px) {
+  .product {
+    width: 220px !important;
+  }
+}

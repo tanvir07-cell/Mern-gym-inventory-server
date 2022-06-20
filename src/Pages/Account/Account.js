@@ -23,7 +23,7 @@ const Account = () => {
     fetch(`http://localhost:5000/product/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
-  }, [user.email]);
+  }, [user?.email]);
 
   const handleDelete = (_id, name) => {
     const proceed = window.confirm(
@@ -43,8 +43,8 @@ const Account = () => {
           });
 
           if (data.deletedCount === 1) {
-            const remainingProducts = products?.filter((pd) => pd?._id !== _id);
-            setProducts(remainingProducts);
+            // const remainingProducts = products?.filter((pd) => pd?._id !== _id);
+            setProduct({});
           }
         });
       return;
@@ -55,16 +55,22 @@ const Account = () => {
     <div>
       {user && (
         <div className="col-sm-12 col-md-6 col-lg-4 mt-5 product container w-100 p-5">
-          <h3 className="text-shadow text-center ">
-            {user?.displayName} you added{" "}
-            <span className="text-danger">{product?.name}</span>
-          </h3>
+          {product?.name ? (
+            <h3 className="text-shadow text-center ">
+              {user?.displayName} you added{" "}
+              <span className="text-danger">{product?.name}</span>
+            </h3>
+          ) : (
+            <div className="text-center text-danger">
+              {" "}
+              OOps Please Add Product!
+            </div>
+          )}
         </div>
       )}
-
       {product?.name && (
         <div className="col-sm-12 col-md-6 col-lg-4 mt-7 product mx-auto ">
-          <img src={product?.img} alt="" />
+          <img src={product?.img} alt="" className="w-100" />
           <div className="product-description mx-2">
             <h3 className="mt-2 text-shadow-h2"> {product?.name}</h3>
             <p>

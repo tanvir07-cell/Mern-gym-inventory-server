@@ -22,5 +22,45 @@
     "img": "https://i.ibb.co/LpnrBT7/photo-1620188526357-ff08e03da266-1.png",
     "quantity": "10",
     "supplier": "Gazi Rajin"
+  },
+  {
+    "id": "4",
+    "name": "Cross Cycle",
+    "price": 450,
+    "img": "https://i.ibb.co/LpnrBT7/photo-1620188526357-ff08e03da266-1.png",
+    "quantity": "14",
+    "supplier": "Arafat Hassan"
+  },
+  {
+    "id": "5",
+    "name": "Hammer Chest",
+    "price": 750,
+    "img": "https://i.ibb.co/pQ0Bzw6/pexels-andrea-piacquadio-3837369-1.png",
+    "quantity": "4",
+    "supplier": "Joy"
+  },
+  {
+    "id": "6",
+    "name": "Chest Cross Cable",
+    "price": 550,
+    "img": "https://i.ibb.co/LpnrBT7/photo-1620188526357-ff08e03da266-1.png",
+    "quantity": "7",
+    "supplier": "Shifat"
+  },
+  {
+    "id": "7",
+    "name": "Lat PullDown Machine",
+    "price": 850,
+    "img": "https://i.ibb.co/pQ0Bzw6/pexels-andrea-piacquadio-3837369-1.png",
+    "quantity": "24",
+    "supplier": "Akash"
+  },
+  {
+    "id": "8",
+    "name": "Lat PullDown Machine",
+    "price": 850,
+    "img": "https://i.ibb.co/FXZzStc/photo-1638536534847-2cb61af9efe3-2.png",
+    "quantity": "24",
+    "supplier": "Ashish"
   }
 ]
