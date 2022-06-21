@@ -64,3 +64,9 @@ a {
     -o-transform: translate(0);
   }
 }
+
+@media (max-width: 576px) {
+  .header {
+    min-width: 100% !important;
+  }
+}

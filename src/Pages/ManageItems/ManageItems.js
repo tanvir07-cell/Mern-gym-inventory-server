@@ -87,7 +87,7 @@ const ManageItems = () => {
         ))}
       </div>
       <div className="container mt-3">
-        <button className="btn btn-primary" onClick={handleAddItem}>
+        <button className="btn btn-primary mb-3" onClick={handleAddItem}>
           Add New Item
         </button>
       </div>

@@ -11,10 +11,10 @@ const Header = () => {
   const [user] = useAuthState(auth);
   return (
     <header className="header">
-      <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
+      <Navbar collapseOnSelect expand="lg" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/" className="nav-brand">
-            Gym Inventory
+            Muscle Mania
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

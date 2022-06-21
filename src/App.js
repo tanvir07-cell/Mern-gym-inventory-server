@@ -13,6 +13,8 @@ import AddItem from "./Pages/AddItem/AddItem";
 import { useEffect } from "react";
 import Account from "./Pages/Account/Account";
 import Blog from "./Pages/Blog/Blog";
+import Footer from "./Pages/Shared/Footer/Footer";
+import NotFound from "./Pages/NotFound/NotFound";
 function App() {
   useEffect(() => {
     const loader = document.getElementById("spinner");
@@ -66,7 +68,11 @@ function App() {
           }
         ></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
+
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
