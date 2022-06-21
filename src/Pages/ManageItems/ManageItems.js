@@ -5,12 +5,13 @@ import { GrUpdate } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import useInventory from "../../hooks/useInventory";
+import "./ManageItems.css";
 
 const ManageItems = () => {
   const navigate = useNavigate();
   const [manageProducts, setManageProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/manageProducts")
+    fetch("https://secret-dawn-73954.herokuapp.com/manageProducts")
       .then((res) => res.json())
       .then((data) => setManageProducts(data));
   }, []);
@@ -20,7 +21,7 @@ const ManageItems = () => {
       `Are you sure you want to delete this ${name}?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/manageProducts/${_id}`, {
+      fetch(`https://secret-dawn-73954.herokuapp.com/manageProducts/${_id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())

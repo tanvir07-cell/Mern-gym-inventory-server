@@ -22,7 +22,7 @@ const Product = (props) => {
   console.log(products);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products`)
+    fetch(`https://secret-dawn-73954.herokuapp.com/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);
@@ -33,7 +33,7 @@ const Product = (props) => {
       `Are you sure you want to delete this ${name}?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/products/${_id}`, {
+      fetch(`https://secret-dawn-73954.herokuapp.com/products/${_id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())

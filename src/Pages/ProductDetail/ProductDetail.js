@@ -16,7 +16,7 @@ const ProductDetail = () => {
     if (product.quantity > 0) {
       const quantityUpdate = parseInt(product?.quantity) - 1;
       console.log(quantityUpdate);
-      fetch(`http://localhost:5000/deliver/${id}`, {
+      fetch(`https://secret-dawn-73954.herokuapp.com/deliver/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const ProductDetail = () => {
     if (product.quantity > 0) {
       // parsing restock.value using(+);
       const quantityIncrease = parseInt(product.quantity) + +restock.value;
-      fetch(`http://localhost:5000/restock/${id}`, {
+      fetch(`https://secret-dawn-73954.herokuapp.com/restock/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -87,10 +87,10 @@ const ProductDetail = () => {
             placeholder={`Restock this ${product?.name}`}
           />
           <button
-            className="btn btn-primary mx-2"
+            className="btn btn-primary"
             onClick={() => handleSubmitRestock(id)}
           >
-            Restock
+            Restock Item
           </button>
         </div>
         <button

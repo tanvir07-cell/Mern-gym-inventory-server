@@ -20,7 +20,7 @@ const Account = () => {
   //   console.log(user.email);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${user?.email}`)
+    fetch(`https://secret-dawn-73954.herokuapp.com/product/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [user?.email]);
@@ -30,7 +30,7 @@ const Account = () => {
       `Are you sure you want to delete this ${name}?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/products/${_id}`, {
+      fetch(`https://secret-dawn-73954.herokuapp.com/products/${_id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())

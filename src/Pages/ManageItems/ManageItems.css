@@ -1,0 +1,5 @@
+@media (max-width: 576px) {
+  .product {
+    width: 100% !important;
+  }
+}

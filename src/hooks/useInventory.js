@@ -5,7 +5,7 @@ const useInventory = () => {
   const limit = 6;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products?limit=6`)
+    fetch(`https://secret-dawn-73954.herokuapp.com/products?limit=6`)
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);

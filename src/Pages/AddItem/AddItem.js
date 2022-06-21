@@ -21,7 +21,7 @@ const AddItem = () => {
       email: e.target.email?.value,
     };
 
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://secret-dawn-73954.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

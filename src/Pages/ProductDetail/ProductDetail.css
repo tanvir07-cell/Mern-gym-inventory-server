@@ -2,3 +2,16 @@
   margin-top: 5rem;
   padding-bottom: 2rem;
 }
+
+@media (max-width: 576px) {
+  .product {
+    min-width: 100% !important;
+  }
+  #restock {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  button {
+    padding: 1rem 1.5 !important;
+  }
+}

@@ -5,7 +5,7 @@ const UseProductDetail = (id) => {
   // console.log(product);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://secret-dawn-73954.herokuapp.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
