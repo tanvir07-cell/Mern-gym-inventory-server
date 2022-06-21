@@ -13,7 +13,7 @@ const Header = () => {
     <header className="header">
       <Navbar collapseOnSelect expand="lg" variant="dark" className="header">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} to="/" className="nav-brand">
             Gym Inventory
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

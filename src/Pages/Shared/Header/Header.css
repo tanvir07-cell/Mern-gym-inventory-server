@@ -1,2 +1,32 @@
-.header {
+.nav-brand {
+  color: #fff !important;
+  font-size: 1.8rem !important;
+
+  letter-spacing: 0.5rem !important;
+  font-weight: 900 !important;
+  background: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif),
+    linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44) !important;
+  background-size: cover !important;
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+
+  text-transform: capitalize !important;
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
+    0px -5px 35px rgba(255, 255, 255, 0.3) !important;
+}
+
+.text-gradient {
+  animation: ElementAnimation 1s ease-in-out infinite alternate;
+  -webkit-animation: ElementAnimation 1s ease-in-out infinite alternate;
+}
+@keyframes ElementAnimation {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 212, 255, 1), 0 0 10px rgba(0, 212, 255, 1),
+      0 0 20px rgba(2, 0, 36, 1), 0 0 40px rgba(2, 0, 36, 1);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(121, 9, 49, 1), 0 0 10px rgba(121, 9, 49, 1),
+      0 0 20px rgba(121, 9, 49, 1), 0 0 40px rgba(121, 9, 49, 1);
+  }
 }
