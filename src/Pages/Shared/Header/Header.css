@@ -30,3 +30,37 @@
       0 0 20px rgba(121, 9, 49, 1), 0 0 40px rgba(121, 9, 49, 1);
   }
 }
+
+/* adding animation on the link(NavLink compo) */
+
+a {
+  animation: moveInLeft 1.5s ease-in-out;
+  -webkit-animation: moveInLeft 1.5s ease-in-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(20px);
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    /* both y and x direction 0 */
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -ms-transform: translate(0);
+    -o-transform: translate(0);
+  }
+}

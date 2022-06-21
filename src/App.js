@@ -12,6 +12,7 @@ import ManageItems from "./Pages/ManageItems/ManageItems";
 import AddItem from "./Pages/AddItem/AddItem";
 import { useEffect } from "react";
 import Account from "./Pages/Account/Account";
+import Blog from "./Pages/Blog/Blog";
 function App() {
   useEffect(() => {
     const loader = document.getElementById("spinner");
@@ -64,6 +65,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/blog" element={<Blog></Blog>}></Route>
       </Routes>
     </div>
   );
